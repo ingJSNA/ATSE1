@@ -4,11 +4,35 @@
 
 - [Advanced Topics in Software Engineering 1](#advanced-topics-in-software-engineering-1)
 	- [JavaScript](#javascript)
+	- [TypeScript](#typescript)
+	- [MongoDB](#mongodb)
+	- [Express](#express)
+	- [Angular](#angular)
+	- [RxJS](#rxjs)
 
 <!-- /TOC -->
 
 ## JavaScript
 
 * [Essential JavaScript Resources ][essentialJS]
+* [(Book) You dont know JS][you-dont-know-js]
+* [(Exercises) Functional JavaScript][functional-js]
+
+```
+1. Download & install node.js (https://nodejs.org/en/)
+2. npm install -g  functional-javascript-workshop@latest
+3. functional-javascript
+```
+## TypeScript
+
+## MongoDB
+
+## Express
+
+## Angular
+
+## RxJS
 
 [essentialJS]: https://gist.github.com/ericelliott/d576f72441fc1b27dace/0cee592f8f8b7eae39c4b3851ae92b00463b67b9
+[you-dont-know-js]: https://github.com/getify/You-Dont-Know-JS
+[functional-js]: https://github.com/timoxley/functional-javascript-workshop
