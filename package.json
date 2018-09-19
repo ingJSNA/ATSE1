@@ -1,0 +1,23 @@
+{
+  "name": "atse1",
+  "version": "1.0.0",
+  "description": "<!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ingJSNA/ATSE1.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ingJSNA/ATSE1/issues"
+  },
+  "homepage": "https://github.com/ingJSNA/ATSE1#readme",
+  
+  "devDependencies": {
+    "typescript": "^3.0.3"
+  }
+}
