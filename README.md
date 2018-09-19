@@ -18,10 +18,10 @@
 * [(Book) You dont know JS][you-dont-know-js]
 * [(Exercises) Functional JavaScript][functional-js]
 
-```
-1. Download & install node.js (https://nodejs.org/en/)
-2. npm install functional-javascript-workshop@latest
-3. functional-javascript
+```bash
+# Download & install node.js (https://nodejs.org/en/)
+$ npm install functional-javascript-workshop@latest
+$ functional-javascript
 ```
 
 * [Exploring ES6][es6]
