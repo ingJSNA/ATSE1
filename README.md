@@ -20,10 +20,16 @@
 
 ```
 1. Download & install node.js (https://nodejs.org/en/)
-2. npm install -g  functional-javascript-workshop@latest
+2. npm install functional-javascript-workshop@latest
 3. functional-javascript
 ```
+
+* [Exploring ES6][es6]
+
+
 ## TypeScript
+
+
 
 ## MongoDB
 
@@ -36,3 +42,4 @@
 [essentialJS]: https://gist.github.com/ericelliott/d576f72441fc1b27dace/0cee592f8f8b7eae39c4b3851ae92b00463b67b9
 [you-dont-know-js]: https://github.com/getify/You-Dont-Know-JS
 [functional-js]: https://github.com/timoxley/functional-javascript-workshop
+[es6]: http://exploringjs.com/es6/

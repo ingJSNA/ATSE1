@@ -10,14 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/ingJSNA/ATSE1.git"
   },
-  "author": "",
+  "author": "Juan Navarro",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ingJSNA/ATSE1/issues"
   },
   "homepage": "https://github.com/ingJSNA/ATSE1#readme",
-  
   "devDependencies": {
+    "ts-node": "^7.0.1",
     "typescript": "^3.0.3"
   }
 }
