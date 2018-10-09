@@ -4,9 +4,7 @@ function logger(namespace) {
     // SOLUTION GOES HERE
     function log(){
         args = slice.apply(arguments)
-        
-        message = namespace.concat(" ").concat(args.join(' '));
-        console.log(message);
+        console.log([namespace].concat(args).join(' '));
     }
     return log;
 }
