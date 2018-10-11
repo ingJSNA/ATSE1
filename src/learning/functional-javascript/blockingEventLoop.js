@@ -1,15 +1,26 @@
 function repeat(operation, num) {
     // modify this so it can be interrupted
 
-    this._stop = false;
+    if (!this.count) {
+        this.count = 1;
+    }
 
-    this.setTimeout(() => { _stop = true }, 100);
+    //console.log(num, count++);
 
+    if (num <= 0) {
+        return
+    } else {
+        operation();
 
-    if (num <= 0 || _stop) return
-    operation();
-    return recursive(operation, --num);
+        // release control every 10 or so iterations.
+        // 10 is arbitrary.
 
+        if (num % 20 === 0) {
+            return setTimeout(() => { repeat.apply(this, [operation, --num]) }, 1);
+        } else {
+            return repeat.apply(this, [operation, --num]);
+        }
+    }
 }
 
 
