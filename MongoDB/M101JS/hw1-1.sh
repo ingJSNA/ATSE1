@@ -9,4 +9,4 @@ cd "./hw1-1"
 
 mongorestore dump
 
-mongo hw1_1.js
+mongo m101 --eval "db.hw1_1.find();"
