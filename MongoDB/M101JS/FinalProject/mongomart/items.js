@@ -338,11 +338,11 @@ function ItemDAO(database) {
 
         let query = { _id: itemId };
 
-        console.log("getItem_query: ", query);
+        //console.log("getItem_query: ", query);
 
         let document = this.db.collection('item').findOne(query,
             function (err, document) {
-                console.log("doc: ", document['_id']);
+                //console.log("doc: ", document['_id']);
                 item = document;
                 callback(item);
             }
@@ -393,13 +393,31 @@ function ItemDAO(database) {
 
         // TODO replace the following two lines with your code that will
         // update the document with a new review.
+
         var doc = this.createDummyItem();
         doc.reviews = [reviewDoc];
+
+        let collection = this.db.collection('item');
+
+        collection.updateOne(
+            {_id: itemId}, 
+            { $push: {reviews: reviewDoc}},
+            function(err, result){
+                assert.equal(err, null);
+                console.log("result: ", result.result);
+
+                collection.findOne({_id: itemId},
+                    function (err, document) {
+                        console.log("doc: ", document['_id']);
+                        callback(document);
+                    }
+                );
+            });
 
         // TODO Include the following line in the appropriate
         // place within your code to pass the updated doc to the
         // callback.
-        callback(doc);
+        //callback(doc);
     }
 
 
