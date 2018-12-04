@@ -184,9 +184,34 @@ function ItemDAO(database) {
          *
          */
 
+        let query = {"category": category};
+        if(category === 'All'){
+            query = {};
+        }
+
+        let cursor = this.db.collection("item").aggregate([
+            { $match: query},
+            { $count: "numItems"}
+        ]
+        );
+
+        cursor.each(
+            function (err, doc) {
+                assert.equal(err, null);
+                if (doc) {
+                    //console.log("doc: ", doc);
+                    numItems = doc.numItems;
+                }else{
+                    //console.log("numItems: ", numItems);
+                    callback(numItems);
+                }
+
+            }
+        );
+
         // TODO Include the following line in the appropriate
         // place within your code to pass the count to the callback.
-        callback(numItems);
+        //callback(numItems);
     }
 
 
