@@ -83,7 +83,7 @@ function ItemDAO(database) {
                     //console.log("doc: ", doc);
                     category.num += doc.num;
                     categories.push(doc);
-                }else{
+                } else {
                     //console.log("categories: ", categories);
                     callback(categories);
                 }
@@ -91,7 +91,7 @@ function ItemDAO(database) {
             }
         );
 
-        
+
 
         // TODO-lab1A Replace all code above (in this method).
 
@@ -129,8 +129,8 @@ function ItemDAO(database) {
 
         var pageItems = [];
 
-        let query = {"category": category};
-        if(category === 'All'){
+        let query = { "category": category };
+        if (category === 'All') {
             query = {};
         }
 
@@ -138,17 +138,17 @@ function ItemDAO(database) {
         //console.log("page: ", page, "itemsPerPage: ", itemsPerPage);
 
         var cursor = this.db.collection('item').find(query)
-                                                .sort({'_id': 1})
-                                                .skip(page*itemsPerPage)
-                                                .limit(itemsPerPage);
+            .sort({ '_id': 1 })
+            .skip(page * itemsPerPage)
+            .limit(itemsPerPage);
 
         cursor.forEach(
-            function(doc) {
+            function (doc) {
                 //console.log("doc: ", doc['_id']);
                 pageItems.push(doc);
 
             },
-            function(err) {
+            function (err) {
                 assert.equal(err, null);
                 //console.log("pageItems: ", pageItems.length);
                 callback(pageItems);
@@ -184,14 +184,14 @@ function ItemDAO(database) {
          *
          */
 
-        let query = {"category": category};
-        if(category === 'All'){
+        let query = { "category": category };
+        if (category === 'All') {
             query = {};
         }
 
         let cursor = this.db.collection("item").aggregate([
-            { $match: query},
-            { $count: "numItems"}
+            { $match: query },
+            { $count: "numItems" }
         ]
         );
 
@@ -201,7 +201,7 @@ function ItemDAO(database) {
                 if (doc) {
                     //console.log("doc: ", doc);
                     numItems = doc.numItems;
-                }else{
+                } else {
                     //console.log("numItems: ", numItems);
                     callback(numItems);
                 }
@@ -242,18 +242,40 @@ function ItemDAO(database) {
          *
          */
 
-        var item = this.createDummyItem();
         var items = [];
-        for (var i = 0; i < 5; i++) {
-            items.push(item);
-        }
+
+        // Index creation, executed it on mongo shell
+        // this.db.collection('item').createIndex( { title: "text", slogan: "text", description: "text" } );
+
+        let search_query = { $text: { $search: query } };
+
+        //console.log("search_query: ", search_query);
+        //console.log("page: ", page, "itemsPerPage: ", itemsPerPage);
+
+        var cursor = this.db.collection('item').find(search_query)
+            .sort({ '_id': 1 })
+            .skip(page * itemsPerPage)
+            .limit(itemsPerPage);
+
+        cursor.forEach(
+            function (doc) {
+                //console.log("doc: ", doc['_id']);
+                items.push(doc);
+
+            },
+            function (err) {
+                assert.equal(err, null);
+                //console.log("items: ", items.length);
+                callback(items);
+            }
+        );
 
         // TODO-lab2A Replace all code above (in this method).
 
         // TODO Include the following line in the appropriate
         // place within your code to pass the items for the selected page
         // of search results to the callback.
-        callback(items);
+        //callback(items);
     }
 
 
@@ -275,7 +297,27 @@ function ItemDAO(database) {
         * simply do this in the mongo shell.
         */
 
-        callback(numItems);
+        let search_query = { $text: { $search: query } };
+
+        let cursor = this.db.collection("item").aggregate([
+            { $match: search_query },
+            { $count: "numItems" }
+        ]
+        );
+
+        cursor.each(
+            function (err, doc) {
+                assert.equal(err, null);
+                if (doc) {
+                    //console.log("doc: ", doc);
+                    numItems = doc.numItems;
+                } else {
+                    //console.log("numItems: ", numItems);
+                    callback(numItems);
+                }
+
+            }
+        );
     }
 
 
