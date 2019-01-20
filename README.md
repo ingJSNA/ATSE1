@@ -35,6 +35,7 @@ $ functional-javascript
 
 * [MongoDB Documentation][mongodb-docs]
 * [MongoDB University][mongodb-University]
+* [mongoose][mongoose]
 
 ## Express
 
@@ -52,4 +53,5 @@ $ functional-javascript
 [mdm-js]: https://developer.mozilla.org/es/docs/Web/JavaScript
 [mongodb-docs]: https://docs.mongodb.com/
 [mongodb-University]: https://university.mongodb.com/
+[mongoose]: https://mongoosejs.com/
 [you-dont-know-js]: https://github.com/getify/You-Dont-Know-JS
